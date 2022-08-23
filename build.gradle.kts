@@ -9,6 +9,8 @@ plugins {
 }
 
 group = "n0yrtr"
+
+val akkaScalaBinary = "2.13"
 version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_17
 
@@ -29,6 +31,10 @@ dependencies {
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.restdocs:spring-restdocs-mockmvc")
+    implementation(platform("com.typesafe.akka:akka-bom_${akkaScalaBinary}:2.6.19"))
+    implementation("com.typesafe.akka:akka-persistence-typed_${akkaScalaBinary}")
+    testImplementation("com.typesafe.akka:akka-persistence-testkit_${akkaScalaBinary}")
+
 }
 
 tasks.withType<KotlinCompile> {
